@@ -8,7 +8,7 @@
              d:DesignHeight="800" d:DesignWidth="600" Background="White">
     <DockPanel>
         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Top" Margin="10">
-            <TextBlock Text="TEST" FontSize="26"/>
+            <TextBlock Text="Concentration with Pokemons" FontSize="26"/>
         </DockPanel>
 
         <DockPanel DockPanel.Dock="Bottom" Margin="10" LastChildFill="True">
