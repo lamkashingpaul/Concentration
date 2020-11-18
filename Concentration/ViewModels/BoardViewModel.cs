@@ -24,7 +24,6 @@ namespace Concentration.ViewModels
         private CardViewModel SelectedCard1;
         private CardViewModel SelectedCard2;
 
-        private DispatcherTimer _readyTimer;
         private DispatcherTimer _timeoutTimer;
 
         private const int _readytime = 5;
@@ -68,7 +67,6 @@ namespace Concentration.ViewModels
             NumberOfCardsSelected = 0;
 
             _timeoutTimer = new DispatcherTimer();
-            _readyTimer = new DispatcherTimer();
         }
 
         public int NumberOfCardsSelected
@@ -110,10 +108,6 @@ namespace Concentration.ViewModels
             }
 
             var card = sender as CardViewModel;
-            Console.WriteLine(card.ColCoordinate);
-            Console.WriteLine(card.RowCoordinate);
-            Console.WriteLine(card.IsEnable);
-            Console.WriteLine(card.IsSelected);
 
             if (NumberOfCardsSelected == 0)
             {
@@ -149,26 +143,9 @@ namespace Concentration.ViewModels
             return null;
         }
 
-        public DispatcherTimer ReadyTimer
-        {
-            get { return _readyTimer; }
-        }
         public DispatcherTimer TimeoutTimer
         {
             get { return _timeoutTimer; }
-        }
-
-        public void Preparation()
-        {
-            _readyTimer.Interval = new TimeSpan(0, 0, _readytime);
-            _readyTimer.Tick += ReadyTick;
-            _readyTimer.Start();
-
-            AreEnable = false;
-            foreach (var card in Cards)
-            {
-                card.IsEnable = false;
-            }
         }
 
         private void TimeoutTick(object sender, EventArgs e)
@@ -184,16 +161,6 @@ namespace Concentration.ViewModels
             SelectedCard1 = SelectedCard2 = null;
             NumberOfCardsSelected = 0;
             _timeoutTimer.Stop();
-        }
-
-        private void ReadyTick(object sender, EventArgs e)
-        {
-            AreEnable = true;
-            foreach (var card in Cards)
-            {
-                card.IsEnable = true;
-            }
-            _readyTimer.Stop();
         }
     }
 }

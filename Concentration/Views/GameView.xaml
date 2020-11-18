@@ -22,7 +22,6 @@
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding CurrentViewModel.GameStat}">
                 <TextBlock Visibility="{Binding WinMessage}" Text="You Win" FontSize="26"/>
-                <TextBlock Visibility="{Binding LoseMessage}" Text="You Lose" FontSize="26"/>
             </StackPanel>
         </DockPanel>
 

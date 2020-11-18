@@ -14,26 +14,13 @@ namespace Concentration.ViewModels
         private const int _row = 5;
         private const int _numberOfCards = _col * _row;
 
-        private const int _maxAttempts = 5;
         private const int _pointGet = 50;
         private const int _pointLose = 25;
 
-        private int _attempts;
         private int _matchedCards;
         private int _score;
 
         private bool _win;
-        private bool _lose;
-
-        public int Attempts
-        {
-            get { return _attempts; }
-            set
-            {
-                _attempts = value;
-                OnPropertyChanged("Attempts");
-            }
-        }
 
         public int MatchedCards
         {
@@ -65,16 +52,6 @@ namespace Concentration.ViewModels
             }
         }
 
-        public bool Lose
-        {
-            get { return _lose; }
-            set
-            {
-                _lose = value;
-                OnPropertyChanged("LoseMessage");
-            }
-        }
-
         public GameStatViewModel()
         {
             NewGameStat();
@@ -82,21 +59,14 @@ namespace Concentration.ViewModels
 
         public void NewGameStat()
         {
-            _attempts = _maxAttempts;
             _matchedCards = 0;
             _score = 0;
             _win = false;
-            _lose = false;
         }
 
         public Visibility WinMessage
         {
             get { return Win ? Visibility.Visible : Visibility.Collapsed; }
-        }
-
-        public Visibility LoseMessage
-        {
-            get { return Lose ? Visibility.Visible : Visibility.Collapsed; }
         }
 
         public void AddPoints()

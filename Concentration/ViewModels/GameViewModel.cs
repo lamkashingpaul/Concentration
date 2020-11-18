@@ -38,8 +38,6 @@ namespace Concentration.ViewModels
             Board = new BoardViewModel();
             GameStat = new GameStatViewModel();
 
-            Board.Preparation();
-
             OnPropertyChanged(nameof(Board));
             OnPropertyChanged(nameof(GameStat));
         }
@@ -59,13 +57,6 @@ namespace Concentration.ViewModels
             } else if (result == false)
             {
                 GameStat.DeducePoints();
-                GameStat.Attempts -= 1;
-                if (GameStat.Attempts == 0)
-                {
-                    Board.TimeoutTimer.Stop();
-                    Board.AreEnable = false;
-                    GameStat.Lose = true;
-                }
             }
         }
     }
