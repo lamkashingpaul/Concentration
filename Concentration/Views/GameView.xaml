@@ -21,14 +21,20 @@
                 <Button Content="Restart Game" FontSize="26" Command="{Binding CurrentViewModel.ResetGameCommand}"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding CurrentViewModel.GameStat}">
-                <TextBlock Visibility="{Binding WinMessage}" Text="You Win" FontSize="26"/>
+                <TextBlock Visibility="{Binding WinMessage}" Text="You Win" FontSize="26" Foreground="Red"/>
             </StackPanel>
         </DockPanel>
 
         <ItemsControl ItemsSource="{Binding CurrentViewModel.Board.Cards}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <Grid DockPanel.Dock="Top" Margin="10" IsEnabled="{Binding AreEnable}">
+                    <Grid MinHeight="480"
+                          MinWidth="384"
+                          Height="480"
+                          Width="384"
+                          DockPanel.Dock="Top"
+                          Margin="10"
+                          IsEnabled="{Binding AreEnable}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
